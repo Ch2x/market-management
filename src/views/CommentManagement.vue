@@ -19,14 +19,7 @@
             </el-table-column>
             <el-table-column label="操作">
                 <template slot-scope="scope">
-                    <el-popover width="160" v-model="visible" trigger="manual">
-                        <p>确定删除吗？</p>
-                        <div style="text-align: right; margin: 0">
-                        <el-button size="mini" type="text" @click="visible = false">取消</el-button>
-                        <el-button type="primary" size="mini" @click="visible = false">确定</el-button>
-                        </div>
-                        <el-button slot="reference" size="mini" @click="visible = true">删除</el-button>
-                    </el-popover>
+                    <el-button size="mini" type="danger"  @click="handleDelete(scope.$index)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -41,7 +34,7 @@
     </div>
 </template>
 <script>
-import { getAllComments, getCommentCount } from '../service/api';
+import { getAllComments, getCommentCount, delComments } from '../service/api';
 export default {
     data() {
         return {
@@ -75,6 +68,24 @@ export default {
         async getList() {
             const result = await getAllComments({pageSize: this.pageSize, page: this.page,});
             this.tableData = result;
+        },
+        async handleDelete(index) {
+            const result = await delComments(this.tableData[index].comment_id);
+            if(result.status) {
+                this.tableData.splice(index, 1);
+                this.total--;
+                this.$message({
+                    showClose: true,
+                    message: '删除成功',
+                    type: 'success'
+                });
+            }else {
+                this.$message({
+                    showClose: true,
+                    message: '删除失败',
+                    type: 'error'
+                });
+            }
         }
     }
 }

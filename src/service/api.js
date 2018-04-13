@@ -13,3 +13,11 @@ export const changeProductChecked = (product_id, isCheck) => fetch(`/management/
 export const getAllComments = (payload) => fetch('/management/getAllComments', payload, "GET");
 
 export const getCommentCount = () => fetch('/management/getCommentCount', {}, "GET");
+
+export const delComments = (comment_id) => fetch(`/management/delComments/${comment_id}`, {}, 'DELETE')
+
+export const addSort = (payload) => fetch('/management/addSort', payload, "GET");
+
+export const getAllSorts = (payload) => fetch('/management/getAllSorts', payload, "GET");
+
+export const getSortCount = () => fetch('/management/getSortCount', {}, "GET");

@@ -19,16 +19,20 @@
                         active-text-color="rgb(73,138,245)"
                     router>
                     <el-menu-item index="UserManagement">
-                    <i class="el-icon-menu"></i>
-                    <span slot="title">用户管理</span>
+                        <i class="el-icon-menu"></i>
+                        <span slot="title">用户管理</span>
                     </el-menu-item>
                     <el-menu-item index="ProductManagement">
-                    <i class="el-icon-document"></i>
-                    <span slot="title">产品管理</span>
+                        <i class="el-icon-document"></i>
+                        <span slot="title">产品管理</span>
                     </el-menu-item>
                     <el-menu-item index="CommentManagement">
-                    <i class="el-icon-document"></i>
-                    <span slot="title">评论管理</span>
+                        <i class="el-icon-document"></i>
+                        <span slot="title">评论管理</span>
+                    </el-menu-item>
+                    <el-menu-item index="SortManagement">
+                        <i class="el-icon-document"></i>
+                        <span slot="title">分类管理</span>
                     </el-menu-item>
                 </el-menu>  
             </el-col>
