@@ -21,3 +21,9 @@ export const addSort = (payload) => fetch('/management/addSort', payload, "GET")
 export const getAllSorts = (payload) => fetch('/management/getAllSorts', payload, "GET");
 
 export const getSortCount = () => fetch('/management/getSortCount', {}, "GET");
+
+export const editSort = (payload) => fetch('/management/editSort', payload, "POST");
+
+// export const getAllUsers = (payload) => fetch('/management/getAllUsers', payload, "GET");
+
+export const getOrdersCount = () => fetch('/management/getOrdersCount', {}, "GET");

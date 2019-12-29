@@ -4,23 +4,18 @@
             :data="tableData"
             style="width: 100%">
             <el-table-column
-                prop="from_uid"
-                label="评论人ID"
+                prop="userName"
+                label="姓名"
                 width="180">
             </el-table-column>
             <el-table-column
-                prop="content"
-                label="评论内容"
+                prop="user_id"
+                label="用户ID"
                 width="180">
             </el-table-column>
             <el-table-column
-                prop="commentTime"
-                label="评论时间">
-            </el-table-column>
-            <el-table-column label="操作">
-                <template slot-scope="scope">
-                    <el-button size="mini" type="danger"  @click="handleDelete(scope.$index)">删 除</el-button>
-                </template>
+                prop="registered_time"
+                label="注册时间">
             </el-table-column>
         </el-table>
         <el-pagination
@@ -34,7 +29,7 @@
     </div>
 </template>
 <script>
-import { getAllComments, getCommentCount, delComments } from '../service/api';
+import { getAllUsers, getOrdersCount } from '../service/api';
 export default {
     data() {
         return {
@@ -43,7 +38,6 @@ export default {
             pageSize: '',
             page: '',
             currentPage: 1,
-            visible: false,
         }
     },
     created() {
@@ -59,33 +53,15 @@ export default {
             this.getList();
         },
         async init(payload) {
-            const result = await getCommentCount();
+            const result = await getOrdersCount();
             if(result.status) {
                 this.total = result.total
             }
             this.getList();
         },
         async getList() {
-            const result = await getAllComments({pageSize: this.pageSize, page: this.page,});
+            const result = await getAllUsers({pageSize: this.pageSize, page: this.page,});
             this.tableData = result;
-        },
-        async handleDelete(index) {
-            const result = await delComments(this.tableData[index].comment_id);
-            if(result.status) {
-                this.tableData.splice(index, 1);
-                this.total--;
-                this.$message({
-                    showClose: true,
-                    message: '删除成功',
-                    type: 'success'
-                });
-            }else {
-                this.$message({
-                    showClose: true,
-                    message: '删除失败',
-                    type: 'error'
-                });
-            }
         }
     }
 }

@@ -6,6 +6,7 @@ import UserManagement from '@/views/UserManagement'
 import ProductManagement from '@/views/ProductManagement'
 import CommentManagement from '@/views/CommentManagement'
 import SortManagement from '@/views/SortManagement'
+import OrderManagement from '@/views/OrderManagement'
 import Login from '@/views/Login'
 
 Vue.use(Router)
@@ -41,6 +42,11 @@ export default new Router({
           path: '/sortManagement',
           name: 'SortManagement',
           component: SortManagement
+        },
+        {
+          path: '/orderManagement',
+          name: 'OrderManagement',
+          component: OrderManagement
         },
       ]
     }
