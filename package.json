@@ -28,6 +28,7 @@
     "vue-cli-plugin-element": "^1.0.1",
     "vue-server-renderer": "^2.6.11",
     "vue-template-compiler": "^2.6.10",
+    "webpack-bundle-analyzer": "^3.6.1",
     "webpack-node-externals": "^1.7.2"
   },
   "eslintConfig": {

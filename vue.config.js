@@ -19,6 +19,16 @@ const devConfig = {
   ...baseConfig
 }
 const buildConfig = {
+  chainWebpack: (config) => {
+    /* 添加分析工具*/
+    if (process.env.npm_config_report) {
+      config
+        .plugin('webpack-bundle-analyzer')
+        .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin)
+        .end();
+      config.plugins.delete('prefetch')
+    }
+  },
   ...baseConfig
 }
 
