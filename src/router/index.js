@@ -1,50 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Market from '@/views/Market'
-import UserManagement from '@/views/UserManagement'
-import ProductManagement from '@/views/ProductManagement'
-import CommentManagement from '@/views/CommentManagement'
-import SortManagement from '@/views/SortManagement'
-import OrderManagement from '@/views/OrderManagement'
-import Login from '@/views/Login'
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+  {
     path: '/',
-    name: 'Login',
-    component: Login,
+    name: 'Home',
+    component: Home
   },
   {
-    path: '/market',
-    name: 'Market',
-    component: Market,
-    children: [{
-        path: '/userManagement',
-        name: 'UserManagement',
-        component: UserManagement
-      },
-      {
-        path: '/productManagement',
-        name: 'ProductManagement',
-        component: ProductManagement
-      },
-      {
-        path: '/commentManagement',
-        name: 'CommentManagement',
-        component: CommentManagement
-      },
-      {
-        path: '/sortManagement',
-        name: 'SortManagement',
-        component: SortManagement
-      },
-      {
-        path: '/orderManagement',
-        name: 'OrderManagement',
-        component: OrderManagement
-      },
-    ]
+    path: '/about',
+    name: 'About',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ]
 

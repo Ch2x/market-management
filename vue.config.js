@@ -2,7 +2,7 @@ const path = require('path')
 
 const projectRoot = path.resolve(__dirname)
 
-module.exports = {
+const baseConfig = {
   lintOnSave: true,
 
   configureWebpack: {
@@ -13,3 +13,13 @@ module.exports = {
     }
   }
 }
+
+//开发环境配置
+const devConfig = {
+  ...baseConfig
+}
+const buildConfig = {
+  ...baseConfig
+}
+
+module.exports = process.env.NODE_ENV === 'development' ? devConfig : buildConfig;
