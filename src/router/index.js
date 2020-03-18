@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 import Market from '@/views/Market'
 // import UserManagement from '@/views/UserManagement'
 // import ProductManagement from '@/views/ProductManagement'
@@ -8,7 +8,7 @@ import Market from '@/views/Market'
 // import OrderManagement from '@/views/OrderManagement'
 import Login from '@/views/Login'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
 const routes = [{
     path: '/',
@@ -48,8 +48,13 @@ const routes = [{
   }
 ]
 
-const router = new VueRouter({
-  routes
-})
+// const router = new VueRouter({
+//   routes
+// })
 
-export default router
+export function createRouter() {
+  return new Router({
+    mode: 'history',
+    routes
+  })
+}
